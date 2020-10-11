@@ -12,8 +12,8 @@ namespace ConsoleGraphics
 
         public MultipleChoise(string[] newOptions, int length, int ypos = -1, int xpos = -1)
         {
-            this.options = new string[newOptions.Length];
-            newOptions.CopyTo(this.options, 0);
+            options = new string[newOptions.Length];
+            newOptions.CopyTo(options, 0);
             if (ypos == -1)
             {
                 X_Pos = Console.CursorTop;

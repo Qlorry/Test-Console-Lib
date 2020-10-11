@@ -9,7 +9,7 @@ namespace ConsoleGraphics
         IChoise choise;
         string[] box;
         int width, height;
-        int xpos;
+        int xpos, ypos;
         int length;
 
 
@@ -22,15 +22,17 @@ namespace ConsoleGraphics
             height = Console.WindowHeight;
 
             xpos = (width - box[0].Length) / 2;
+            ypos = (height - box.Length) / 2;
 
-            choise = new MultipleChoise(options, length, (height - box.Length) / 2 + 3, xpos);
+
+            choise = new MultipleChoise(options, length, ypos + 3, xpos);
         }
 
         public void pop()
         {
             Console.Beep();
 
-            int currentLine = (height - box.Length) / 2;
+            int currentLine = ypos;
             foreach (var line in box)
             {
                 object_colour[] temp = new object_colour[1];
@@ -42,7 +44,7 @@ namespace ConsoleGraphics
             }
             choise.getAnswer();
 
-            Console.Clear();
+            ConsoleGrapher.clear();
         }
     }
 }

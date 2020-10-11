@@ -31,18 +31,12 @@ namespace ConsoleGraphics
 
         static int width, heigth;
 
-        //public ConsoleGrapher()
-        //{
-        //    Console.BufferWidth = Console.WindowWidth = width;
-        //    Console.BufferHeight = Console.WindowHeight = heigth;
-            
-        //}
-
         public static void init(int width, int heigth, string[] newMask, object[] startValues = null)
         {
             Console.BufferWidth = Console.WindowWidth = width;
             Console.BufferHeight = Console.WindowHeight = heigth;
-            //Console.SetWindowSize(width, heigth);
+
+
             ConsoleGrapher.width = width;
             ConsoleGrapher.heigth = heigth;
 
@@ -55,10 +49,7 @@ namespace ConsoleGraphics
 
                 render(values);
             }
-            else
-            {
-                printHello();
-            }
+            else printHello();
         }
 
         private static void printHello()
@@ -110,12 +101,10 @@ namespace ConsoleGraphics
             if (ypos == -1)
             {
                 ypos = 0;
-                //Console.SetCursorPosition(0, pos);
             }
             if (xpos == -1)
             {
                 xpos = 0;
-                //Console.SetCursorPosition(0, pos);
             }
 
             int totalLength = 0;
@@ -178,5 +167,13 @@ namespace ConsoleGraphics
 
             return res;
         }
+
+        public static void clear()
+        {
+            Console.Clear();
+        }
+
     }
+
+
 }

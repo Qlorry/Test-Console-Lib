@@ -44,6 +44,11 @@ namespace Test_Console_Lib
 
             PopUpMultipleChoise choise = new PopUpMultipleChoise("????????", variants);
             choise.pop();
+
+            PopUpYesOrNo choise3 = new PopUpYesOrNo("??");
+            choise3.pop();
+
+            ConsoleGrapher.render();
         }
     }
 }
