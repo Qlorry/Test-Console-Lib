@@ -1,0 +1,9 @@
+C:\Users\kosti\source\repos\Test Console Lib\ConsoleGraphics\bin\Debug\netstandard2.0\ConsoleGraphics.deps.json
+C:\Users\kosti\source\repos\Test Console Lib\ConsoleGraphics\bin\Debug\netstandard2.0\ConsoleGraphics.dll
+C:\Users\kosti\source\repos\Test Console Lib\ConsoleGraphics\bin\Debug\netstandard2.0\ConsoleGraphics.pdb
+C:\Users\kosti\source\repos\Test Console Lib\ConsoleGraphics\obj\Debug\netstandard2.0\ConsoleGraphics.csprojAssemblyReference.cache
+C:\Users\kosti\source\repos\Test Console Lib\ConsoleGraphics\obj\Debug\netstandard2.0\ConsoleGraphics.AssemblyInfoInputs.cache
+C:\Users\kosti\source\repos\Test Console Lib\ConsoleGraphics\obj\Debug\netstandard2.0\ConsoleGraphics.AssemblyInfo.cs
+C:\Users\kosti\source\repos\Test Console Lib\ConsoleGraphics\obj\Debug\netstandard2.0\ConsoleGraphics.csproj.CoreCompileInputs.cache
+C:\Users\kosti\source\repos\Test Console Lib\ConsoleGraphics\obj\Debug\netstandard2.0\ConsoleGraphics.dll
+C:\Users\kosti\source\repos\Test Console Lib\ConsoleGraphics\obj\Debug\netstandard2.0\ConsoleGraphics.pdb

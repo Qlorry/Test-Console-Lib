@@ -1,0 +1,36 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v3.1",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v3.1": {
+      "Test Console Lib/1.0.0": {
+        "dependencies": {
+          "ConsoleGraphics": "1.0.0"
+        },
+        "runtime": {
+          "Test Console Lib.dll": {}
+        }
+      },
+      "ConsoleGraphics/1.0.0": {
+        "runtime": {
+          "ConsoleGraphics.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Test Console Lib/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "ConsoleGraphics/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

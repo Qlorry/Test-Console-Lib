@@ -1,0 +1,16 @@
+C:\Users\kosti\source\repos\Test Console Lib\Test Console Lib\bin\Debug\netcoreapp3.1\Test Console Lib.exe
+C:\Users\kosti\source\repos\Test Console Lib\Test Console Lib\bin\Debug\netcoreapp3.1\Test Console Lib.deps.json
+C:\Users\kosti\source\repos\Test Console Lib\Test Console Lib\bin\Debug\netcoreapp3.1\Test Console Lib.runtimeconfig.json
+C:\Users\kosti\source\repos\Test Console Lib\Test Console Lib\bin\Debug\netcoreapp3.1\Test Console Lib.runtimeconfig.dev.json
+C:\Users\kosti\source\repos\Test Console Lib\Test Console Lib\bin\Debug\netcoreapp3.1\Test Console Lib.dll
+C:\Users\kosti\source\repos\Test Console Lib\Test Console Lib\bin\Debug\netcoreapp3.1\Test Console Lib.pdb
+C:\Users\kosti\source\repos\Test Console Lib\Test Console Lib\bin\Debug\netcoreapp3.1\ConsoleGraphics.dll
+C:\Users\kosti\source\repos\Test Console Lib\Test Console Lib\bin\Debug\netcoreapp3.1\ConsoleGraphics.pdb
+C:\Users\kosti\source\repos\Test Console Lib\Test Console Lib\obj\Debug\netcoreapp3.1\Test Console Lib.csprojAssemblyReference.cache
+C:\Users\kosti\source\repos\Test Console Lib\Test Console Lib\obj\Debug\netcoreapp3.1\Test Console Lib.AssemblyInfoInputs.cache
+C:\Users\kosti\source\repos\Test Console Lib\Test Console Lib\obj\Debug\netcoreapp3.1\Test Console Lib.AssemblyInfo.cs
+C:\Users\kosti\source\repos\Test Console Lib\Test Console Lib\obj\Debug\netcoreapp3.1\Test Console Lib.csproj.CoreCompileInputs.cache
+C:\Users\kosti\source\repos\Test Console Lib\Test Console Lib\obj\Debug\netcoreapp3.1\Test Console Lib.csproj.CopyComplete
+C:\Users\kosti\source\repos\Test Console Lib\Test Console Lib\obj\Debug\netcoreapp3.1\Test Console Lib.dll
+C:\Users\kosti\source\repos\Test Console Lib\Test Console Lib\obj\Debug\netcoreapp3.1\Test Console Lib.pdb
+C:\Users\kosti\source\repos\Test Console Lib\Test Console Lib\obj\Debug\netcoreapp3.1\Test Console Lib.genruntimeconfig.cache
