@@ -9,9 +9,8 @@ namespace ConsoleGraphics
         string[] options;
         int X_Pos, Y_Pos;
         int length;
-        ConsoleGrapher gh;
 
-        public MultipleChoise(ConsoleGrapher gh, string[] newOptions, int length, int ypos = -1, int xpos = -1)
+        public MultipleChoise(string[] newOptions, int length, int ypos = -1, int xpos = -1)
         {
             this.options = new string[newOptions.Length];
             newOptions.CopyTo(this.options, 0);
@@ -27,7 +26,6 @@ namespace ConsoleGraphics
             else Y_Pos = xpos;
 
             this.length = length;
-            this.gh = gh;
         }
 
         public int getAnswer()
@@ -44,8 +42,7 @@ namespace ConsoleGraphics
                 data[i].str = options[i];
             }
 
-            gh.renderString(data, length, X_Pos, Y_Pos);
-            Console.Beep();
+            ConsoleGrapher.renderString(data, length, X_Pos, Y_Pos);
 
             while (true){
                 ConsoleKeyInfo keyPressed = Console.ReadKey(false);
@@ -59,7 +56,7 @@ namespace ConsoleGraphics
                     data[selectedElement - 1].foreground = ConsoleColor.Magenta;
                     selectedElement -= 1;
 
-                    gh.renderString(data, length, X_Pos, Y_Pos);
+                    ConsoleGrapher.renderString(data, length, X_Pos, Y_Pos);
                     continue;
                 }
                 
@@ -70,7 +67,7 @@ namespace ConsoleGraphics
                     data[selectedElement + 1].foreground = ConsoleColor.Magenta;
                     selectedElement += 1;
 
-                    gh.renderString(data, length, X_Pos, Y_Pos);
+                    ConsoleGrapher.renderString(data, length, X_Pos, Y_Pos);
                     continue;
                 }
             }

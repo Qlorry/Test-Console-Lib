@@ -8,7 +8,7 @@ namespace Test_Console_Lib
     {
         static void Main(string[] args)
         {
-            ConsoleGrapher gh = new ConsoleGrapher(60, 20, null);
+            ConsoleGrapher.init(60, 20, null);
 
             string[] mask = {"____________________\n",
                              "{16,2} |{0,3}|{1,3}|{2,3}|{3,3}|\n",
@@ -31,18 +31,18 @@ namespace Test_Console_Lib
                 1, 2, 3, 4
             };
 
-            gh.setMask(mask);
+            ConsoleGrapher.setMask(mask);
             //gh.setMaskInCenter();
-            gh.render(data);
+            ConsoleGrapher.render(data);
 
             string[] variants = { "Ok", "NOT OK", "OKOK" };
 
 
 
-            MultipleChoise choise2 = new MultipleChoise(gh, variants, -1);
+            MultipleChoise choise2 = new MultipleChoise(variants, -1);
             choise2.getAnswer();
 
-            PopUpMultipleChoise choise = new PopUpMultipleChoise("????????", gh, variants);
+            PopUpMultipleChoise choise = new PopUpMultipleChoise("????????", variants);
             choise.pop();
         }
     }

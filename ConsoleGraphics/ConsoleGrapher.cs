@@ -24,20 +24,27 @@ namespace ConsoleGraphics
         }
     }
 
-    public class ConsoleGrapher
+    public static class ConsoleGrapher
     {
-        string[] mask;
-        object[] values;
+        static string[] mask;
+        static object[] values;
 
-        int width, heigth;
+        static int width, heigth;
 
-        public ConsoleGrapher(int width, int heigth, string[] newMask, object[] startValues = null)
+        //public ConsoleGrapher()
+        //{
+        //    Console.BufferWidth = Console.WindowWidth = width;
+        //    Console.BufferHeight = Console.WindowHeight = heigth;
+            
+        //}
+
+        public static void init(int width, int heigth, string[] newMask, object[] startValues = null)
         {
             Console.BufferWidth = Console.WindowWidth = width;
             Console.BufferHeight = Console.WindowHeight = heigth;
             //Console.SetWindowSize(width, heigth);
-            this.width = width;
-            this.heigth = heigth;
+            ConsoleGrapher.width = width;
+            ConsoleGrapher.heigth = heigth;
 
             setMask(newMask);
 
@@ -54,14 +61,14 @@ namespace ConsoleGraphics
             }
         }
 
-        private void printHello()
+        private static void printHello()
         {
-            PopUpInfo Info = new PopUpInfo(this, "Hello!!!");
+            PopUpInfo Info = new PopUpInfo("Hello!!!");
             Info.pop();
             render();
         }
 
-        public void render(object[] new_values = null, int pos = 0)
+        public static void render(object[] new_values = null, int pos = 0)
         {
             //try
             //{
@@ -86,7 +93,7 @@ namespace ConsoleGraphics
             //}
         }
 
-        public void renderString(object_colour[] object_s, int length, int ypos = -1, int xpos = -1) //space -1 for whole screen
+        public static void renderString(object_colour[] object_s, int length, int ypos = -1, int xpos = -1) //space -1 for whole screen
         {
             if (object_s == null)
             {
@@ -147,19 +154,19 @@ namespace ConsoleGraphics
             Console.ResetColor();
         }
 
-        public void setMask(string[] newMask)
+        public static void setMask(string[] newMask)
         {
             if(newMask == null)
             {
-                this.mask = null;
+                ConsoleGrapher.mask = null;
                 return;
             }
 
-            this.mask = new string[newMask.Length];
-            newMask.CopyTo(this.mask, 0);
+            ConsoleGrapher.mask = new string[newMask.Length];
+            newMask.CopyTo(ConsoleGrapher.mask, 0);
         }
 
-        private string compileMask()
+        private static string compileMask()
         {
             string res = "";
             if(mask == null) { return res; }
