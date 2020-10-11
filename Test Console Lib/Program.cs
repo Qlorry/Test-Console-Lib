@@ -38,17 +38,13 @@ namespace Test_Console_Lib
             string[] variants = { "Ok", "NOT OK", "OKOK" };
 
 
-
-            MultipleChoise choise2 = new MultipleChoise(variants, -1);
-            choise2.getAnswer();
-
             PopUpMultipleChoise choise = new PopUpMultipleChoise("????????", variants);
             choise.pop();
 
             PopUpYesOrNo choise3 = new PopUpYesOrNo("??");
-            choise3.pop();
+            while(choise3.pop()) ConsoleGrapher.render();
 
-            ConsoleGrapher.render();
+
         }
     }
 }
