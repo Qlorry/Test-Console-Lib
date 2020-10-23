@@ -8,7 +8,8 @@ namespace Test_Console_Lib
     {
         static void Main(string[] args)
         {
-            ConsoleGrapher.init(60, 20, null);
+            ConsoleGrapher.Init(60, 20);
+
 
             string[] mask = {"____________________\n",
                              "{16,2} |{0,3}|{1,3}|{2,3}|{3,3}|\n",
@@ -31,9 +32,10 @@ namespace Test_Console_Lib
                 1, 2, 3, 4
             };
 
-            ConsoleGrapher.setMask(mask);
+
+            ConsoleGrapher.SetMask(mask);
             //gh.setMaskInCenter();
-            ConsoleGrapher.render(data);
+            ConsoleGrapher.Render(data);
 
             string[] variants = { "Ok", "NOT OK", "OKOK" };
 
@@ -42,9 +44,7 @@ namespace Test_Console_Lib
             choise.pop();
 
             PopUpYesOrNo choise3 = new PopUpYesOrNo("Rerender?");
-            while(choise3.pop()) ConsoleGrapher.render();
-
-
+            while(choise3.pop()) ConsoleGrapher.Render();
         }
     }
 }

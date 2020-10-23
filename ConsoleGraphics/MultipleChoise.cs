@@ -1,4 +1,5 @@
 ﻿using System;
+using System.CodeDom.Compiler;
 using System.Collections.Generic;
 using System.Text;
 
@@ -9,6 +10,7 @@ namespace ConsoleGraphics
         string[] options;
         int X_Pos, Y_Pos;
         int length;
+        object_colour[] data;
 
         public MultipleChoise(string[] newOptions, int length, int ypos = -1, int xpos = -1)
         {
@@ -28,21 +30,38 @@ namespace ConsoleGraphics
             this.length = length;
         }
 
-        public int getAnswer()
+
+        private void genString()
         {
-            object_colour[] data = new object_colour[options.Length];
-            for(int i = 0; i < options.Length; i++) { data[i] = new object_colour(ConsoleColor.Black, ConsoleColor.Gray); }
-
-            int selectedElement = 0;
-
-            data[0].foreground = ConsoleColor.Magenta;
-            data[0].background = ConsoleColor.Gray;
-
-            for (int i = 0; i < data.Length; i++) {
-                data[i].str = options[i];
+            int totalLength = 0;
+            int totalSize;
+            foreach (var item in options)
+            {
+                totalLength += item.Length;
             }
 
-            ConsoleGrapher.renderString(data, length, X_Pos, Y_Pos);
+            int spaces = (length - totalLength) / (options.Length + 1); // 2 paddings + (options.Len - 1) * spaces
+            totalSize = ((length - totalLength) / spaces) + options.Length;
+
+
+            data = new object_colour[totalSize];
+            
+            for (int i = 0, j = 0; i < options.Length;) {
+                data[j++] = new object_colour(new string(' ', spaces), ConsoleColor.Black, ConsoleColor.Gray);
+                data[j++] = new object_colour(options[i++], ConsoleColor.Black, ConsoleColor.Gray);
+            }
+            data[data.Length-1] = new object_colour(new string(' ', spaces), ConsoleColor.Black, ConsoleColor.Gray);
+        }
+
+        public int getAnswer()
+        {
+            genString();
+            int selectedElement = 1;
+
+            data[selectedElement].foreground = ConsoleColor.Magenta;
+            data[selectedElement].background = ConsoleColor.Gray;
+
+            ConsoleGrapher.RenderString(data, length, X_Pos, Y_Pos);
 
             while (true){
                 ConsoleKeyInfo keyPressed = Console.ReadKey(false);
@@ -51,27 +70,28 @@ namespace ConsoleGraphics
 
                 if (keyPressed.Key == ConsoleKey.LeftArrow)
                 {
-                    if (selectedElement == 0) continue;
+                    if (selectedElement == 1) continue;
                     data[selectedElement].foreground = ConsoleColor.Black;
-                    data[selectedElement - 1].foreground = ConsoleColor.Magenta;
-                    selectedElement -= 1;
+                    data[selectedElement - 2].foreground = ConsoleColor.Magenta;
+                    selectedElement -= 2;
 
-                    ConsoleGrapher.renderString(data, length, X_Pos, Y_Pos);
+                    ConsoleGrapher.RenderString(data, length, X_Pos, Y_Pos);
                     continue;
                 }
                 
                 if (keyPressed.Key == ConsoleKey.RightArrow)
                 {
-                    if (selectedElement == options.Length - 1) continue;
+                    if (selectedElement == data.Length - 2) continue;
                     data[selectedElement].foreground = ConsoleColor.Black;
-                    data[selectedElement + 1].foreground = ConsoleColor.Magenta;
-                    selectedElement += 1;
+                    data[selectedElement + 2].foreground = ConsoleColor.Magenta;
+                    selectedElement += 2;
 
-                    ConsoleGrapher.renderString(data, length, X_Pos, Y_Pos);
+                    ConsoleGrapher.RenderString(data, length, X_Pos, Y_Pos);
                     continue;
                 }
             }
-            return selectedElement;
+
+            return (selectedElement - 1) / 2;
         }
     }
 }

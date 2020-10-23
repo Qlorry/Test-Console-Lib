@@ -8,7 +8,6 @@ namespace ConsoleGraphics
     {
         IChoise choise;
         string[] box;
-        int width, height;
         int xpos, ypos;
         int length;
 
@@ -18,18 +17,16 @@ namespace ConsoleGraphics
             box = BoxGenerator.createBox(msg, options);
             length = box[0].Length;
 
-            width = Console.WindowWidth;
-            height = Console.WindowHeight;
-
-            xpos = (width - box[0].Length) / 2;
-            ypos = (height - box.Length) / 2;
+            xpos = (Constants.Width - box[0].Length) / 2;
+            ypos = (Constants.Height - box.Length) / 2;
 
 
             choise = new MultipleChoise(options, length, ypos + 3, xpos);
         }
 
-        public void pop()
+        public int pop()
         {
+            int res = -1;
             Console.Beep();
 
             int currentLine = ypos;
@@ -38,13 +35,14 @@ namespace ConsoleGraphics
                 object_colour[] temp = new object_colour[1];
                 temp[0] = new object_colour(line);
 
-                ConsoleGrapher.renderString(temp, length, currentLine, xpos);
+                ConsoleGrapher.RenderString(temp, length, currentLine, xpos);
 
                 currentLine += 1;
             }
-            choise.getAnswer();
+            res = choise.getAnswer();
 
-            ConsoleGrapher.clear();
+            ConsoleGrapher.Clear();
+            return res;
         }
     }
 }

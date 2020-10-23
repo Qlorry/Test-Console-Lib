@@ -14,6 +14,13 @@ namespace ConsoleGraphics
             str = "";
             foreground = foregr;
             background = backgr;
+        } 
+        
+        public object_colour(string text, ConsoleColor foregr, ConsoleColor backgr)
+        {
+            str = text;
+            foreground = foregr;
+            background = backgr;
         }
 
         public object_colour(string text)
@@ -29,62 +36,66 @@ namespace ConsoleGraphics
         static string[] mask;
         static object[] values;
 
-        static int width, heigth;
-
-        public static void init(int width, int heigth, string[] newMask, object[] startValues = null)
+        public static void Init(int width, int heigth, string[] newMask = null, object[] startValues = null)
         {
-            Console.BufferWidth = Console.WindowWidth = width;
-            Console.BufferHeight = Console.WindowHeight = heigth;
+            //set console sizes, min w = 20 min h = 6
+            Constants.setConstrains(width < 20 ? 20 : width, heigth < 6 ? 6 : heigth);
+            Console.BufferWidth = Console.WindowWidth = Constants.Width;
+            Console.BufferHeight = Console.WindowHeight = Constants.Height;
 
 
-            ConsoleGrapher.width = width;
-            ConsoleGrapher.heigth = heigth;
-
-            setMask(newMask);
-
-            if (startValues != null)
+            //set mask if given
+            if (newMask != null)
             {
-                values = new object[startValues.Length];
-                startValues.CopyTo(values, 0);
+                SetMask(newMask);
 
-                render(values);
+                //render if values given
+                if (startValues != null)
+                {
+                    values = new object[startValues.Length];
+                    startValues.CopyTo(values, 0);
+
+                    Render(values);
+                }
             }
             else printHello();
         }
 
         private static void printHello()
         {
-            PopUpInfo Info = new PopUpInfo("Hello!!!");
+            PopUpInfo Info = new PopUpInfo("Hello!!!", Style.RAINBOW);
             Info.pop();
-            render();
         }
 
-        public static void render(object[] new_values = null, int pos = 0)
+        public static void Render(object[] new_values = null)
         {
-            //try
-            //{
+            Clear();
+            try
+            {
+                render(new_values);
+            }
+            catch(Exception e)
+            {
+                PopUpInfo Info = new PopUpInfo(e.Message, Style.ERROR);
+                Info.pop();
+            }
+        }
+
+        private static void render(object[] new_values = null)
+        {
             if (new_values != null)
             {
                 values = new object[new_values.Length];
                 new_values.CopyTo(values, 0);
             }
 
-            if (mask == null) return;
-
-            if (values != null)
-            {
-                Console.WriteLine(compileMask(), values);
-            }
-            else Console.WriteLine("Rendering Error");
-
-            //}
-            //catch
-            //{
-            //    Console.WriteLine("Rendering Error");
-            //}
+            if (mask == null) throw new Exception("No mask!!");
+            if (values == null) throw new Exception("No values!!");
+            
+            Console.WriteLine(compileMask(), values);
         }
 
-        public static void renderString(object_colour[] object_s, int length, int ypos = -1, int xpos = -1) //space -1 for whole screen
+        public static void RenderString(object_colour[] object_s, int length, int ypos = -1, int xpos = -1) //space -1 for whole screen
         {
             if (object_s == null)
             {
@@ -92,7 +103,7 @@ namespace ConsoleGraphics
                 return;
             }
 
-            if (ypos > heigth || xpos > width)
+            if (ypos > Constants.Height || xpos > Constants.Width)
             {
                 Console.WriteLine("Rendering Once Error");
                 return;
@@ -107,23 +118,17 @@ namespace ConsoleGraphics
                 xpos = 0;
             }
 
-            int totalLength = 0;
-            foreach (var item in object_s)
-            {
-                totalLength += item.str.Length;
-            }
 
             if(length == -1)
             {
-                length = width;
+                length = Constants.Width;
             }
 
-            int spaces = (length - totalLength) / (object_s.Length + 1); // 2 paddings + object_s.Len - 1 spaces
 
             Console.SetCursorPosition(xpos, ypos);
 
-            Console.BackgroundColor = ConsoleColor.White;
-            Console.Write(new string(' ', spaces));
+            //Console.BackgroundColor = ConsoleColor.White;
+            //Console.Write(new string(' ', spaces));
 
             for (int i = 0; i < object_s.Length - 1; i++)
             {
@@ -132,8 +137,8 @@ namespace ConsoleGraphics
                 Console.Write(object_s[i].str);
 
                 Console.ResetColor();
-                Console.BackgroundColor = ConsoleColor.White;
-                Console.Write(new string(' ', spaces));
+                //Console.BackgroundColor = ConsoleColor.White;
+                //Console.Write(new string(' ', spaces));
             }
 
             Console.BackgroundColor = object_s[object_s.Length-1].background;
@@ -143,16 +148,16 @@ namespace ConsoleGraphics
             Console.ResetColor();
         }
 
-        public static void setMask(string[] newMask)
+        public static void SetMask(string[] newMask)
         {
             if(newMask == null)
             {
-                ConsoleGrapher.mask = null;
+                mask = null;
                 return;
             }
 
-            ConsoleGrapher.mask = new string[newMask.Length];
-            newMask.CopyTo(ConsoleGrapher.mask, 0);
+            mask = new string[newMask.Length];
+            newMask.CopyTo(mask, 0);
         }
 
         private static string compileMask()
@@ -168,12 +173,9 @@ namespace ConsoleGraphics
             return res;
         }
 
-        public static void clear()
+        public static void Clear()
         {
             Console.Clear();
         }
-
     }
-
-
 }
